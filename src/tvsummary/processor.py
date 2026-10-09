@@ -49,3 +49,20 @@ def count_by_decade(records):
                 decade_counts[label] = decade_counts.get(label, 0) + 1
 
     return decade_counts
+
+
+def build_summary(records):
+    """Build a summary of the downloaded TV show records."""
+    languages = {
+        show.get("language")
+        for show in records
+        if show.get("language")
+    }
+
+    return {
+        "records_processed": len(records),
+        "unique_languages": len(languages),
+        "shows_by_genre": count_genres(records),
+        "average_rating_by_language": average_rating_by_language(records),
+        "shows_by_decade": count_by_decade(records),
+    }
