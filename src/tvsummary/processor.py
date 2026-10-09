@@ -29,3 +29,23 @@ def average_rating_by_language(records):
     }
 
     return averages
+
+
+
+def count_by_decade(records):
+    """Count TV shows by the decade in which they premiered."""
+    decade_counts = {}
+
+    for show in records:
+        premiered = show.get("premiered")
+
+        if isinstance(premiered, str) and len(premiered) >= 4:
+            year_text = premiered[:4]
+
+            if year_text.isdigit():
+                year = int(year_text)
+                decade = (year // 10) * 10
+                label = f"{decade}s"
+                decade_counts[label] = decade_counts.get(label, 0) + 1
+
+    return decade_counts
