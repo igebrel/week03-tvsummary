@@ -1,15 +1,17 @@
-# Week 02 - TVMaze Records Processing
-
+# Week 03 - TVMaze Summary Project
 ## Overview
 
 This project downloads TV show records from the TVMaze API and processes the returned data using Python. The program organizes the records and creates an aggregated summary in JSON format.
 
 ## Files
-
-- `records.py` - Downloads and processes TV show records.
-- `summary.json` - Contains the generated summary results.
-- `requirements.txt` - Lists the Python package required by the project.
-- `.gitignore` - Specifies files and folders that Git should ignore.
+- `src/tvsummary/fetcher.py` - Downloads TV show records from the TVMaze API.
+- `src/tvsummary/processor.py` - Processes the records and creates the summary.
+- `src/tvsummary/reporter.py` - Saves the summary to a JSON file.
+- `src/tvsummary/main.py` - Runs the project using the other modules.
+- `summary.json` - Contains the summary results.
+- `pyproject.toml` - Contains the project configuration.
+- `requirements.txt` - Lists the required Python packages.
+- `.gitignore` - Lists files and folders that Git should ignore.
 
 ## Requirements
 
@@ -18,17 +20,33 @@ This project downloads TV show records from the TVMaze API and processes the ret
 
 ## Installation
 
-Create and activate a virtual environment, then install the required package:
+
+I used a Conda environment to run this project.
+
+To create the environment, run:
 
 ```bash
-pip install -r requirements.txt
+conda env create -f environment.yml
+```
+
+To activate the environment, run:
+
+```bash
+conda activate tvsummary
+```
+
+To install the project, run:
+
+```bash
+pip install -e .
+```
 
 ## How to Run
 
 Run the program from the terminal:
 
 ```bash
-python records.py
+conda run -n tvsummary python -m tvsummary.main
 ```
 
 ## Output
